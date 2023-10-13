@@ -15,5 +15,13 @@ public class CatalogView extends Composite<VerticalLayout> {
     public CatalogView() {
         getContent().setHeightFull();
         getContent().setWidthFull();
+        getContent().add(
+                new CatalogViewCard("Text","url"),
+                new CatalogViewCard("Text","url"),
+                new CatalogViewCard("Text","url"),
+                new CatalogViewCard("Text","url"),
+                new CatalogViewCard("Text","url")
+        );
     }
+
 }
