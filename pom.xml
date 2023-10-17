@@ -48,17 +48,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-cassandra</artifactId>
         </dependency>
-       <!-- <dependency>
-            <groupId>com.datastax.oss</groupId>
-            <artifactId>java-driver-query-builder</artifactId>
-            <version>${java-driver.version}</version>
+        <dependency>
+            <groupId>com.datastax.astra</groupId>
+            <artifactId>astra-spring-boot-3x-starter</artifactId>
+            <version>0.7.0</version>
         </dependency>
         <dependency>
-            <groupId>com.datastax.oss</groupId>
-            <artifactId>java-driver-mapper-runtime</artifactId>
-            <version>${java-driver.version}</version>
-        </dependency>-->
-        <!-- End DataStax driver -->
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
             <!-- Replace artifactId with vaadin-core to use only free components -->
