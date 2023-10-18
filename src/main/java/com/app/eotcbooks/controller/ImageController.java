@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/image")
+@RequestMapping("/resources")
 @RequiredArgsConstructor
 public class ImageController {
     private final BookService bookService;

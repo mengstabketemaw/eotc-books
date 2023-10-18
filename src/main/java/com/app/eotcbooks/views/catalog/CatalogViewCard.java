@@ -1,5 +1,6 @@
 package com.app.eotcbooks.views.catalog;
 
+import com.app.eotcbooks.model.Book;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.ListItem;
@@ -21,9 +22,10 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Width;
 
 public class CatalogViewCard extends ListItem {
 
-    public CatalogViewCard(String text, String url) {
-        addClassNames(Background.CONTRAST_5, Display.FLEX, FlexDirection.COLUMN, AlignItems.START, Padding.MEDIUM,
+    public CatalogViewCard(Book book) {
+        addClassNames(Background.CONTRAST_5, Display.FLEX, FlexDirection.COLUMN, AlignItems.START, Padding.MEDIUM, Margin.MEDIUM,
                 BorderRadius.LARGE);
+
 
         Div div = new Div();
         div.addClassNames(Background.CONTRAST, Display.FLEX, AlignItems.CENTER, JustifyContent.CENTER,
@@ -31,29 +33,34 @@ public class CatalogViewCard extends ListItem {
         div.setHeight("160px");
 
         Image image = new Image();
-        image.setWidth("100%");
-        image.setSrc(url);
-        image.setAlt(text);
+        image.setWidth("120px");
+        image.setSrc(book.getPages().stream().findFirst().orElse("Image Not available url"));
+        image.setAlt(book.getName());
 
         div.add(image);
 
         Span header = new Span();
         header.addClassNames(FontSize.XLARGE, FontWeight.SEMIBOLD);
-        header.setText("Title");
+        header.setText(book.getName());
 
         Span subtitle = new Span();
         subtitle.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
-        subtitle.setText("Card subtitle");
+        subtitle.setText(book.getCategory());
 
-        Paragraph description = new Paragraph(
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.");
+        Paragraph description = new Paragraph(book.getLang());
         description.addClassName(Margin.Vertical.MEDIUM);
+
 
         Span badge = new Span();
         badge.getElement().setAttribute("theme", "badge");
-        badge.setText("Label");
+        badge.setText("Download");
+        badge.addClickListener(a->{});
 
-        add(div, header, subtitle, description, badge);
+        Div card = new Div(div, header, subtitle, description, badge);
+        card.setHeight("400px");
+        card.setWidth("320px");
+
+        add(card);
 
     }
 }

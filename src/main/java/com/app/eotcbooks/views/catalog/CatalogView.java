@@ -1,42 +1,53 @@
 package com.app.eotcbooks.views.catalog;
 
-import com.app.eotcbooks.model.Book;
+import com.app.eotcbooks.service.BookService;
 import com.app.eotcbooks.views.MainLayout;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.virtuallist.VirtualList;
-import com.vaadin.flow.data.provider.DataProvider;
-import com.vaadin.flow.data.renderer.ComponentRenderer;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
+import com.vaadin.flow.theme.lumo.LumoUtility;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 @PageTitle("Catalog")
 @Route(value = "catalog", layout = MainLayout.class)
 @RouteAlias(value = "", layout = MainLayout.class)
 public class CatalogView extends Composite<VerticalLayout> {
+    private final BookService bookService;
+    private HorizontalLayout booksList = new HorizontalLayout();
+    public CatalogView(BookService bookService) {
+        this.bookService = bookService;
 
-    public CatalogView() {
+        VerticalLayout verticalLayout = new VerticalLayout();
+
+        booksList.add(getBooks(0));
+        booksList.addClassNames(LumoUtility.Padding.MEDIUM);
+        booksList.setHeightFull();
+        booksList.setWidthFull();
+
+        verticalLayout.add(booksList);
         getContent().setHeightFull();
         getContent().setWidthFull();
-        VirtualList<Book> list = new VirtualList<>();
-        List<Book> books = IntStream.range(0, 50)
-                .mapToObj(i -> new Book())
-                .collect(Collectors.toList());
-        list.setItems(books);
-        list.setHeightFull();
-        list.setWidthFull();
-        list.setRenderer(new ComponentRenderer<>(book -> new CatalogViewCard("Text", "url")));
-        DataProvider<Book,?> dataProvider = DataProvider.fromCallbacks(t-> Stream.of(new Book(), new Book(), new Book()), c->3);
-        list.setDataProvider(dataProvider);
-        getContent().add(
-                list
-        );
+        TextField search = new TextField();
+        Button button = new Button("Get more");
+        booksList.addClassNames(LumoUtility.FlexWrap.WRAP);
+
+        getContent().add(search, booksList, button);
     }
+
+    private List<Component> getBooks(int page) {
+        return bookService.getBooks(page, 20)
+                .stream()
+                .map(CatalogViewCard::new)
+                .collect(Collectors.toList());
+    }
+
 
 }
