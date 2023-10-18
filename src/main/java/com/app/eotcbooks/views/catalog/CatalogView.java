@@ -4,7 +4,10 @@ import com.app.eotcbooks.service.BookService;
 import com.app.eotcbooks.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.dependency.JavaScript;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -19,6 +22,8 @@ import java.util.stream.Collectors;
 @PageTitle("Catalog")
 @Route(value = "catalog", layout = MainLayout.class)
 @RouteAlias(value = "", layout = MainLayout.class)
+@JavaScript("fancybox.umd.js")
+@CssImport("fancybox.css")
 public class CatalogView extends Composite<VerticalLayout> {
     private final BookService bookService;
     private HorizontalLayout booksList = new HorizontalLayout();
@@ -39,7 +44,8 @@ public class CatalogView extends Composite<VerticalLayout> {
         Button button = new Button("Get more");
         booksList.addClassNames(LumoUtility.FlexWrap.WRAP);
 
-        getContent().add(search, booksList, button);
+        getContent().add(new VerticalLayout(search, booksList, button));
+        UI.getCurrent().getPage().executeJs("Fancybox.bind(\"[data-fancybox]\")");
     }
 
     private List<Component> getBooks(int page) {
