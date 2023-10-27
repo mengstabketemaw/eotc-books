@@ -15,7 +15,7 @@ public class ApiController {
 
     @GetMapping("/books")
     public List<Book> getBooks(@RequestParam int page){
-        return bookService.getBooks(page, 25);
+        return bookService.getBooks(page, 10);
     }
 
     @GetMapping(value = "/cover/{id}", produces = "image/png")

@@ -11,6 +11,7 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
     />
+  <link rel="stylesheet" href="../../../../../eotc-book2/eotc-books/src/main/resources/static/style.css">
 
 </head>
 <body>
@@ -72,12 +73,17 @@
       </p>
     </div>
     <div id="content">
-      <h3><input type="text" class="rounded-pill ml-4 " style="background: url(images/menu_hover.png)!important;"/> <label>Search</label></h3>
+      <h3><input type="text" class="rounded-pill ml-4 " style="background: url(images/menu_hover.png)!important;"/>
+        <label>Search</label></h3>
       <div id="bookList" class="d-flex flex-wrap justify-content-evenly align-items-center">
 
       </div>
-      <a href="https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png" role="button" style="background-color: #AA8661" class="mt-3 btn btn-sm float-right text-light">Load more</a>
-
+      <button id="load-more" onclick="loadBook()" role="button" style="background-color: #AA8661"
+              class="mt-3 btn btn-sm float-right text-light">Load more
+      </button>
+      <p id="loading-place-holder" class="placeholder-glow">
+        <span class="placeholder col-12"></span>
+      </p>
     </div>
     <div id="footer"></div>
   </div>

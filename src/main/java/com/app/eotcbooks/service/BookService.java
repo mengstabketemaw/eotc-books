@@ -24,15 +24,6 @@ public class BookService {
         Slice<Book> all = bookRepository.findAll(pageable);
         return all.stream()
                 .skip((long) (page) * pageSize)
-                .map(book->{
-                    List<String> pages = imageRepository.findByBook(book.getId())
-                            .map(image -> "/resources/cover/" + image.getResource_id())
-                            .toList();
-                    Book b = new Book();
-                    BeanUtils.copyProperties(book, b);
-                    b.setPages(pages);
-                    return b;
-                })
                 .toList();
     }
 
