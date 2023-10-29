@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <title>The Book Store</title>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
@@ -14,65 +14,85 @@
 
 </head>
 <body>
-<div class="d-flex flex-column justify-content-center align-items-center">
-  <div id="container">
-    <div id="header">
-      <h1>THE BOOK STORE</h1>
-    </div>
-    <div id="left_column">
-      <div class="left_column_boxes">
-        <h4>Navigation</h4>
-        <div id="navcontainer">
-          <ul id="navlist">
-            <li id="active"><a href="http://all-free-download.com/free-website-templates/" id="current">Home</a>
-            </li>
-            <li><a href="http://all-free-download.com/free-website-templates/">Community</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">Webshop</a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">About us </a></li>
-            <li><a href="http://all-free-download.com/free-website-templates/">Site map </a></li>
-          </ul>
+<div class="d-flex flex-column align-items-stretch">
+  <nav class="navbar bg-body-tertiary fixed-top">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        THE BOOK STORE
+      </span>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2 rounded-pill ml-4" type="search" style="background: url(images/menu_hover.png)!important;" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <div class="offcanvas-body">
+          <div id="left_column">
+            <div class="left_column_boxes">
+              <h4>Navigation</h4>
+              <div id="navcontainer">
+                <ul id="navlist">
+                  <li id="active"><a href="http://all-free-download.com/free-website-templates/" id="current">Home</a>
+                  </li>
+                  <li><a href="http://all-free-download.com/free-website-templates/">Community</a></li>
+                  <li><a href="http://all-free-download.com/free-website-templates/">Webshop</a></li>
+                  <li><a href="http://all-free-download.com/free-website-templates/">About us </a></li>
+                  <li><a href="http://all-free-download.com/free-website-templates/">Site map </a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="left_column_boxes">
+              <h4>News</h4>
+              <dl>
+                <dt class="news">This is a definiton list</dt>
+                <dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed quam. Nullam gravida aliquet odio.
+                  Phasellus ullamcorper tincidunt orci. Praesent vel purus. Sed porttitor. Proin porttitor suscipit
+                  urna. Morbi rhoncus posuere orci.
+                </dd>
+                <dt class="news">Lists are cool</dt>
+                <dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed quam. Nullam gravida aliquet odio.
+                  Phasellus ullamcorper tincidunt orci. Praesent vel purus. Sed porttitor. Proin porttitor suscipit
+                  urna. Morbi rhoncus posuere orci.
+                </dd>
+              </dl>
+            </div>
+            <div class="left_column_boxes">
+              <h4>Contact us</h4>
+              <form id="form1" method="post" class="contact_us"
+                    action="http://all-free-download.com/free-website-templates/">
+                <p>
+                  <label>Name
+                    <input type="text" class="fields_contact_us" name="textfield"/>
+                  </label>
+                  <label>E-mail
+                    <input type="text" class="fields_contact_us" name="textfield1"/>
+                  </label>
+                  <label> Your question:
+                    <textarea name="textarea" cols="" rows=""></textarea>
+                  </label>
+                  <label>
+                    <input type="submit" class="submit_button_contact" name="Submit1" value="Submit"/>
+                  </label>
+                </p>
+              </form>
+            </div>
+            <p class="center">Created by Dieter Schneider 2007 <a href="http://www.csstemplateheaven.com">www.csstemplateheaven.com</a>
+            </p>
+          </div>
         </div>
       </div>
-      <div class="left_column_boxes">
-        <h4>News</h4>
-        <dl>
-          <dt class="news">This is a definiton list</dt>
-          <dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed quam. Nullam gravida aliquet odio.
-            Phasellus ullamcorper tincidunt orci. Praesent vel purus. Sed porttitor. Proin porttitor suscipit
-            urna. Morbi rhoncus posuere orci.
-          </dd>
-          <dt class="news">Lists are cool</dt>
-          <dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed quam. Nullam gravida aliquet odio.
-            Phasellus ullamcorper tincidunt orci. Praesent vel purus. Sed porttitor. Proin porttitor suscipit
-            urna. Morbi rhoncus posuere orci.
-          </dd>
-        </dl>
-      </div>
-      <div class="left_column_boxes">
-        <h4>Contact us</h4>
-        <form id="form1" method="post" class="contact_us"
-              action="http://all-free-download.com/free-website-templates/">
-          <p>
-            <label>Name
-              <input type="text" class="fields_contact_us" name="textfield"/>
-            </label>
-            <label>E-mail
-              <input type="text" class="fields_contact_us" name="textfield1"/>
-            </label>
-            <label> Your question:
-              <textarea name="textarea" cols="" rows=""></textarea>
-            </label>
-            <label>
-              <input type="submit" class="submit_button_contact" name="Submit1" value="Submit"/>
-            </label>
-          </p>
-        </form>
-      </div>
-      <p class="center">Created by Dieter Schneider 2007 <a href="http://www.csstemplateheaven.com">www.csstemplateheaven.com</a>
-      </p>
     </div>
+  </nav>
+
+  <div id="container" style="margin-top: 60px">
+
+
     <div id="content">
-      <h3><input type="text" class="rounded-pill ml-4 " style="background: url(images/menu_hover.png)!important;"/> <label>Search</label></h3>
+
       <div id="bookList" class="d-flex flex-wrap justify-content-evenly align-items-center">
 
       </div>

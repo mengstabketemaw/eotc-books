@@ -1,6 +1,4 @@
 /* CSS Document by Dieter Schneider 2007 | www.csstemplateheaven.com */
-
-* {margin: 0; padding: 0;}
 #book-card {
 	background-image: url(images/body.jpg);
 }
@@ -14,16 +12,9 @@ body {
 /*---------------- Main structure --------------*/
 
 #container {
-	width: 885px;
 	font-size: 1.2em;
-	background-image: url(images/container.jpg);
-	background-repeat: repeat-y;
-}
-
-#header {
-	background-image: url(images/header.jpg);
-	height: 288px;
-	margin-top: 0px;
+	/*background-image: url(images/container.jpg);
+	background-repeat: repeat-y;*/
 }
 
 #sideheader {
@@ -37,10 +28,11 @@ body {
 
 #left_column {
 	width: 180px;
+	hight: max-hight;
 	margin-top: 0px;
 	float: left;
 	background-image: url(images/left_column.jpg);
-	background-repeat: no-repeat;
+	background-repeat: repeat;
 	margin-left: 70px!important;
 	margin-left: 35px;
 }
@@ -75,16 +67,6 @@ p.center {
 	font-size: 0.8em;
 }
 
-h1 {
-	float: right;
-	margin-right: 163px!important;
-	margin-right: 80px;
-	margin-top: 180px;
-	font-size: 44px;
-	color: #55311B;
-}
-
-   
 h3 {
 	font-family: "Times New Roman", Times, serif;
 	font-size: 1.6em;
