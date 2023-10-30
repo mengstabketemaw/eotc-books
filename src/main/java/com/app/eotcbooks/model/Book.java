@@ -1,14 +1,20 @@
 package com.app.eotcbooks.model;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
-@Entity
+@Entity(name = "EOTC_BOOKS")
 @Data
 public class Book {
     @Id
@@ -17,21 +23,21 @@ public class Book {
     String name;
     String category;
     String lang;
-    List<String> pages = new ArrayList<>();
+    String pages;
 
     public String getName() {
         return name.replace("..>","").replace(".pdf","");
     }
 
-    public List<String> getPages() {
-        String category = this.category.replace("/", "_");
-        String name = this.name.replace(".pdf","_");
-        String lang = this.lang;
-        String imageName = (category + name + lang).replace(" ","_")+"_page_";
-
-        return IntStream
-                .range(1,11)
-                .mapToObj(i->"https://res.cloudinary.com/dite3j4b1/image/upload/v1698311142/" + imageName + i+".jpg")
-                .toList();
+    public List<String> getPages(){
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return Arrays
+                    .stream(mapper.readValue(pages,String[].class))
+                    .map(i->"https://res.cloudinary.com/dite3j4b1/image/upload/v1698311142/" + i)
+                    .toList();
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
