@@ -79,20 +79,28 @@
       <span class="navbar-brand mb-0 h1">
         <a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse" class="border rounded-3 p-1 text-decoration-none"><i class="bi bi-list bi-lg py-2 p-1"></i> Menu</a>
       </span>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2 rounded-pill ml-4" type="search"
-                   style="background: url(images/menu_hover.png)!important;" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+          <div class="d-flex" role="search">
+            <input id="search-input" class="form-control me-2 rounded-pill ml-4" type="search" style="background: url(images/menu_hover.png)!important;" placeholder="Search" aria-label="Search">
+            <button id="search-button" class="btn btn-outline-success" type="submit">Search</button>
+          </div>
 
         </div>
       </nav>
 
       <div id="content">
+        <!--Place to show book search result  -->
+        <div id="book-not-found" class="d-flex justify-content-center align-items-center visually-hidden">
+          <h4>Book Not Found!</h4>
+        </div>
 
+        <div id="searchResult" class="d-flex flex-wrap justify-content-evenly align-items-center">
+
+        </div>
+        <!--Main bookshelf    -->
         <div id="bookList" class="d-flex flex-wrap justify-content-evenly align-items-center">
 
         </div>
+
         <p id="loading-place-holder" class="placeholder-glow">
           <span class="placeholder col-12"></span>
         </p>

@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
@@ -17,5 +19,10 @@ public class ApiController {
     @GetMapping("/books")
     public Page<Book> getBooks(Pageable page){
         return bookService.getBooks(page);
+    }
+
+    @GetMapping("/search")
+    public List<Book> search(@RequestParam String key){
+        return bookService.searchBook(key);
     }
 }
