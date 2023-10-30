@@ -1,16 +1,14 @@
 package com.app.eotcbooks.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
-import org.springframework.data.cassandra.core.mapping.Table;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-@Table(value = "book")
+@Entity
 @Data
 public class Book {
     @Id
@@ -19,7 +17,6 @@ public class Book {
     String name;
     String category;
     String lang;
-    @Transient
     List<String> pages = new ArrayList<>();
 
     public String getName() {
