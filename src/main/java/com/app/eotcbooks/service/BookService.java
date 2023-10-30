@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
@@ -16,6 +18,10 @@ public class BookService {
 
     public Page<Book> getBooks(Pageable pageable){
         return bookRepository.findAll(pageable);
+    }
+
+    public List<Book> searchBook(String key){
+        return bookRepository.search(key,key);
     }
 
 }
