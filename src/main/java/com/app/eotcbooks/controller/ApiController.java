@@ -1,6 +1,7 @@
 package com.app.eotcbooks.controller;
 
 import com.app.eotcbooks.model.Book;
+import com.app.eotcbooks.model.Comment;
 import com.app.eotcbooks.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -15,7 +16,6 @@ import java.util.List;
 public class ApiController {
     private final BookService bookService;
 
-
     @GetMapping("/books")
     public Page<Book> getBooks(Pageable page){
         return bookService.getBooks(page);
@@ -25,4 +25,10 @@ public class ApiController {
     public List<Book> search(@RequestParam String key){
         return bookService.searchBook(key);
     }
+
+    @PostMapping("/comment")
+    public void comment(@RequestBody Comment comment){
+        bookService.saveComment(comment);
+    }
+
 }

@@ -117,12 +117,45 @@ function onSearch(){
     } else
         search_books(searchKey);
 }
+
+function showToaster(message,color){
+    $.toast({
+        text:message,
+        bgColor:color
+    });
+
+}
 $(document).ready( function (){
 
     $("#search-button").on("click",onSearch);
     $("#search-input").on("keyup",function (event){
        if(event.key === "Enter")
            onSearch();
+    });
+
+    $("#form-send").on("click", function (){
+        let name = $("#form-name").val();
+        let email = $("#form-email").val();
+        let user_comment = $("#form-comment").val();
+
+        if(!email || !user_comment){
+            showToaster("please provide both email and comment", "red");
+            return;
+        }
+        $.ajax("/api/comment", {
+            method: "POST",
+            contentType:'application/json',
+            data:JSON.stringify({name,email,user_comment}),
+            success:function (){
+                $("#form-name").val("");
+                $("#form-email").val("");
+                $("#form-comment").val("");
+                showToaster("Message sent successfully","green");
+            },
+            error:function (){
+                showToaster("Something went wrong","error");
+            }
+        });
     });
 
     loadBook();
