@@ -1,40 +1,32 @@
-/* CSS Document by Dieter Schneider 2007 | www.csstemplateheaven.com */
+@media only screen and (max-width: 480) {
+.book-card {
+	max-width: auto;
+}
+}
+
+@media only screen and (min-width: 480px){
+.book-card {
+	max-width: 250px;
+}
+}
+
+body{
+	margin: 10;
+	padding: 10;
+}
+
 #book-card {
 	background-image: url(images/body.jpg);
 }
 
 body {
 	background-image: url(images/body.jpg);
-	font-family: Georgia, "Times New Roman", Times, serif;
-	font-size: 62.5%;
 }
 
-/*---------------- Main structure --------------*/
-
-#container {
-	font-size: 1.2em;
-	/*background-image: url(images/container.jpg);
-	background-repeat: repeat-y;*/
-}
-
-#sideheader {
-	background-image: url(images/sideheader.jpg);
-	height: 576px;
-	width: 145px;
-	position: absolute;
-	left: 740px;
-	top: 0px;
-}
-
-#left_column {
-	width: 180px;
-	hight: max-hight;
-	margin-top: 0px;
-	float: left;
+#offcanvasResponsive {
 	background-image: url(images/left_column.jpg);
 	background-repeat: repeat;
-	margin-left: 70px!important;
-	margin-left: 35px;
+	max-width: 300px;
 }
 
 .left_column_boxes {
@@ -44,60 +36,23 @@ body {
 	margin-bottom: 20px;
 }
 
-#content {
-	padding-right: 15px;
-	margin-left: 15px;
-}
 
-#footer {
-	padding: 20px;
-	clear: both;
-}
 
 /*-----------TEXT FORMATTING------------- */
 
 p {
-	padding-top: 15px;
-	padding-bottom: 15px;
 	color: #814F2C;
-}
-
-p.center {
-	text-align: center;
-	font-size: 0.8em;
 }
 
 h3 {
-	font-family: "Times New Roman", Times, serif;
-	font-size: 1.6em;
-	font-style: italic;
 	color: #926B4A;
-	text-align: center;
 }
 
 h4 {color: #926B4A;
-	margin-bottom: 15px;
 }
 
 
 
-
-
-dl {
-	font-size: 0.8em;
-	margin-top: 0px;
-}
-
-dt {
-	font-size: 1.2em;
-	margin-bottom: 3px;
-	color: #666600;
-}
-
-dd {
-	margin-bottom: 15px;
-	color: #814F2C;
-}
 
 .news:first-letter {
 	font-family: "Times New Roman", Times, serif;
