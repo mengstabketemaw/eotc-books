@@ -1,3 +1,13 @@
+@media only screen and (max-width: 458px) {
+	.book-content-list {
+		margin-top: 100px;
+	}
+}
+@media only screen and (min-width: 459px) {
+	.book-content-list {
+		margin-top: 50px;
+	}
+}
 @media only screen and (max-width: 520px) {
 	.book-card {
 		min-width: 390px;
