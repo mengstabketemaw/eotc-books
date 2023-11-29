@@ -30,7 +30,7 @@ function loadBook() {
 
 
                 const bookCard =
-                `<div class="col book-card shadow-none p-1 m-2 bg-body-tertiary rounded" style="width: auto">
+                `<div class="col book-card shadow-none p-1 m-2 bg-body-tertiary rounded">
                     <div class="" style="">
                         <a  href=${cover} data-fancybox=${book.id} data-caption=${book.name} style="display:block; height:128px; overflow:hidden">
                             <img src=${cover} class="img-thumbnail lazy" loading="lazy" alt=${book.name}>
@@ -52,10 +52,7 @@ function loadBook() {
             console.error('Error in REST request');
         }
     });
-
-
 }
-
 function search_books(key) {
 
     $.LoadingOverlay("show");
@@ -86,10 +83,10 @@ function search_books(key) {
                 });
 
                 const bookCard =
-                    `<div class="shadow-none p-1 m-2 bg-body-tertiary rounded" style="height: 250px; width: 200px">
+                    `<div class="book-card shadow-none p-1 m-2 bg-body-tertiary rounded" style="width: 200px">
                         <div class="" style="">
                             <a  href=${cover} data-fancybox=${book.id} data-caption=${book.name} style="display:block; height:128px; overflow:hidden">
-                                <img src=${cover} class="img-thumbnail lazy" loading="lazy" alt=${book.name} style="width: 192px">
+                                <img src=${cover} class="img-thumbnail lazy" loading="lazy" alt=${book.name}>
                             </a>
                         </div>
                         <div class="p-2 d-flex flex-column text-capitalize text-nowrap ">
@@ -108,10 +105,7 @@ function search_books(key) {
             console.error('Error in REST request');
         }
     });
-
-
 }
-
 function onSearch(){
     let searchKey = $("#search-input").val().trim();
     if(searchKey === ""){
@@ -123,7 +117,6 @@ function onSearch(){
     } else
         search_books(searchKey);
 }
-
 function showToaster(message,color){
     $.toast({
         text:message,

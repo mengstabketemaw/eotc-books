@@ -32,8 +32,7 @@
                     class="navbar-brand h1"
                     href="#"
                     data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasResponsive"
-                    aria-controls="offcanvasResponsive">
+                    data-bs-target="#offcanvasResponsive">
                     <img
                         src="images/favicon.ico"
                         alt="Bootstrap"
@@ -49,7 +48,7 @@
         </nav>
         <div class="d-flex" style="margin-top: 60px">
             <div
-                style="margin-right: 10px;"
+                style="margin-right: 10px; padding: 10px"
                 class="offcanvas-lg offcanvas-start"
                 tabindex="-1"
                 id="offcanvasResponsive"
@@ -117,20 +116,20 @@
 
             </div>
             <div id="book-contents">
-                <div id="bookList" class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 row-cols-xl-6">
+                <div id="bookList" class="row row-cols-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 justify-content-center">
                 </div>
                 
                 <div id="book-not-found" class="d-flex justify-content-center align-items-center visually-hidden">
                    <h4>Book Not Found!</h4>
                 </div>
           
-                <div id="searchResult" class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 row-cols-xl-6">
+                <div id="searchResult" class="row row-cols-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 justify-content-center">
         
                 </div>
                 <div id="book-galleries" class="visually-hidden">
 
                 </div>
-                <button id="load-more" onclick="loadBook()" style="background-color: #AA8661" class="mt-3 btn btn-sm float-right text-light">Load more</button>
+                <button id="load-more" onclick="loadBook()" style="background-color: #AA8661" class="mt-3 btn btn-sm float-right text-light ">Load more</button>
             </div>
         </div>
 
@@ -146,23 +145,5 @@
         <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
         <script src="loadingoverlay.min.js"></script>
         <script src="app.js" type="application/javascript"></script>
-        <style>
-            @media only screen and (max-width: 480) {
-            .book-card {
-                max-width: auto;
-            }
-            }
-
-            @media only screen and (min-width: 480px){
-            .book-card {
-                max-width: 250px;
-            }
-            }
-            body{
-                margin: 10;
-                padding: 10;
-            }
-
-        </style> 
     </body>
 </html>

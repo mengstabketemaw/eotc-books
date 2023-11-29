@@ -1,18 +1,14 @@
-@media only screen and (max-width: 480) {
-.book-card {
-	max-width: auto;
-}
-}
-
-@media only screen and (min-width: 480px){
-.book-card {
-	max-width: 250px;
-}
+@media only screen and (max-width: 520px) {
+	.book-card {
+		min-width: 390px;
+	}
 }
 
-body{
-	margin: 10;
-	padding: 10;
+@media only screen and (min-width: 521px){
+	.book-card {
+		max-width: 250px;
+		min-width: 200px;
+	}
 }
 
 #book-card {
@@ -21,12 +17,12 @@ body{
 
 body {
 	background-image: url(images/body.jpg);
+	overflow-x: hidden;
 }
 
 #offcanvasResponsive {
 	background-image: url(images/left_column.jpg);
 	background-repeat: repeat;
-	max-width: 300px;
 }
 
 .left_column_boxes {
