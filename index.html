@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EOTC Book Reader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1><span class="cross">&#10013;</span> EOTC-Books</h1>
+            <input type="text" id="search-input" placeholder="Search by name...">
+        </div>
+    </header>
+    <div id="gallery-container"></div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content-container">
+            <div id="modal-image-container">
+                <img class="modal-content" id="modal-image">
+            </div>
+        </div>
+        <span class="close">&times;</span>
+        <a id="download-button" class="download-button" href="#" target="_blank">&#x21E9;</a>
+        <a class="prev">&#10094;</a>
+        <a class="next">&#10095;</a>
+        <div id="modal-thumbnails"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
