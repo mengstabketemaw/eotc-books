@@ -22,6 +22,24 @@ header {
     align-items: center;
 }
 
+#about-link {
+    color: white;
+    text-decoration: none;
+    margin-left: 1em;
+}
+
+#about-modal .about-content {
+    background-color: #1e1e1e;
+    padding: 2em;
+    border-radius: 5px;
+    max-width: 500px;
+    margin: 15% auto;
+}
+
+#about-modal a {
+    color: #4a90e2;
+}
+
 .header-container h1 {
     font-size: 1.2em;
 }
@@ -74,7 +92,7 @@ header {
 
 .modal-content-container {
     height: 100%;
-    overflow: hidden; /* Hide the overflow to prevent scrollbars during animation */
+    overflow: auto; /* Allow scrolling when content overflows */
     position: relative;
 }
 
@@ -89,10 +107,22 @@ header {
     justify-content: center;
 }
 
+body.modal-open {
+    overflow: hidden;
+}
+
 .modal-content {
     max-width: 80%;
     max-height: 80%;
-    transition: transform 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
 }
 
 .slide-in {
@@ -108,13 +138,16 @@ header {
 }
 
 #modal-thumbnails {
-    position: sticky;
+    position: fixed;
     bottom: 0;
+    left: 0;
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     padding: 10px;
     text-align: center;
     white-space: nowrap;
     overflow-x: auto;
+    z-index: 4; /* Ensure thumbnails are on top of other modal content */
 }
 
 .thumbnail {
@@ -152,10 +185,18 @@ header {
     text-decoration: none;
 }
 
-.close:hover,
-.close:focus,
-.download-button:hover,
-.download-button:focus {
+.close-about {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close-about:hover,
+.close-about:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;

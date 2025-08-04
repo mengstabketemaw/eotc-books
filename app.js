@@ -1,7 +1,7 @@
 const galleryContainer = document.getElementById('gallery-container');
 const modal = document.getElementById('modal');
 const modalImageContainer = document.getElementById('modal-image-container');
-const modalImage = document.getElementById('modal-image');
+let modalImage = document.getElementById('modal-image');
 const modalThumbnails = document.getElementById('modal-thumbnails');
 const closeModal = document.querySelector('.close');
 const prevButton = document.querySelector('.prev');
@@ -12,6 +12,7 @@ const searchInput = document.getElementById('search-input');
 let books = [];
 let filteredBooks = [];
 let currentBookIndex = 0;
+let currentModalBookIndex = 0;
 let currentImageIndex = 0;
 let isLoading = false;
 const booksPerScroll = 20;
@@ -80,22 +81,37 @@ function renderBooks(booksToRender) {
 }
 
 function openModal(bookIndex, imageIndex) {
-    currentBookIndex = bookIndex;
+    currentModalBookIndex = bookIndex;
     const book = books[bookIndex];
     const pages = JSON.parse(book.pages);
     if (pages && pages.length > 0) {
         currentImageIndex = imageIndex;
         modal.style.display = 'block';
+        document.body.classList.add('modal-open');
         updatePageContent();
+        updateButtonStates();
     }
 }
 
-function updatePageContent() {
-    const book = books[currentBookIndex];
+function updateButtonStates() {
+    const book = books[currentModalBookIndex];
     const pages = JSON.parse(book.pages);
-    modalImage.src = imagePrefix + pages[currentImageIndex];
+    nextButton.style.display = currentImageIndex >= pages.length - 1 ? 'none' : 'block';
+    prevButton.style.display = currentImageIndex <= 0 ? 'none' : 'block';
+}
+
+function updatePageContent() {
+    const book = books[currentModalBookIndex];
+    const pages = JSON.parse(book.pages);
+    modalImage.classList.add('fade-out');
+    setTimeout(() => {
+        modalImage.src = imagePrefix + pages[currentImageIndex];
+        modalImage.classList.remove('fade-out');
+        modalImage.classList.add('fade-in');
+    }, 300);
     downloadButton.href = book.address;
     renderThumbnails(pages);
+    updateButtonStates();
 }
 
 function renderThumbnails(pages) {
@@ -113,91 +129,30 @@ function renderThumbnails(pages) {
         });
         modalThumbnails.appendChild(thumbnail);
     });
+    const activeThumbnail = modalThumbnails.querySelector('.active');
+    if (activeThumbnail) {
+        activeThumbnail.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
 }
 
 function showNextImage() {
-    const book = books[currentBookIndex];
+    const book = books[currentModalBookIndex];
     const pages = JSON.parse(book.pages);
-    if (pages && pages.length > 0) {
-        const newImage = new Image();
-        newImage.src = imagePrefix + pages[(currentImageIndex + 1) % pages.length];
-        newImage.classList.add('modal-content');
-        newImage.style.transform = 'translateX(150%)';
-
-        modalImageContainer.appendChild(newImage);
-
-        setTimeout(() => {
-            modalImage.classList.add('slide-out-left');
-            newImage.classList.add('slide-in');
-        }, 50);
-
-        setTimeout(() => {
-            modalImage.remove();
-            modalImage = newImage;
-            currentImageIndex = (currentImageIndex + 1) % pages.length;
-            updatePageContent();
-        }, 350);
+    if (currentImageIndex < pages.length - 1) {
+        currentImageIndex++;
+        updatePageContent();
     }
 }
 
 function showPrevImage() {
-    const book = books[currentBookIndex];
+    const book = books[currentModalBookIndex];
     const pages = JSON.parse(book.pages);
-    if (pages && pages.length > 0) {
-        const newImage = new Image();
-        newImage.src = imagePrefix + pages[(currentImageIndex - 1 + pages.length) % pages.length];
-        newImage.classList.add('modal-content');
-        newImage.style.transform = 'translateX(-150%)';
-
-        modalImageContainer.insertBefore(newImage, modalImage);
-
-        setTimeout(() => {
-            modalImage.classList.add('slide-out-right');
-            newImage.classList.add('slide-in');
-        }, 50);
-
-        setTimeout(() => {
-            modalImage.remove();
-            modalImage = newImage;
-            currentImageIndex = (currentImageIndex - 1 + pages.length) % pages.length;
-            updatePageContent();
-        }, 350);
+    if (currentImageIndex > 0) {
+        currentImageIndex--;
+        updatePageContent();
     }
 }
 
-function handleSwipe() {
-    const swipeThreshold = 50;
-    const verticalThreshold = 75;
-    const horizontalDistance = Math.abs(touchendX - touchstartX);
-    const verticalDistance = Math.abs(touchendY - touchstartY);
-    const elapsedTime = touchEndTime - touchStartTime;
-
-    if (elapsedTime < 500 && horizontalDistance > swipeThreshold && horizontalDistance > verticalDistance) {
-        if (touchendX < touchstartX) {
-            showNextImage();
-        }
-        if (touchendX > touchstartX) {
-            showPrevImage();
-        }
-    }
-}
-
-modalImageContainer.addEventListener('touchstart', e => {
-    if (e.touches.length === 1) {
-        touchstartX = e.changedTouches[0].screenX;
-        touchstartY = e.changedTouches[0].screenY;
-        touchStartTime = new Date().getTime();
-    }
-});
-
-modalImageContainer.addEventListener('touchend', e => {
-    if (e.touches.length === 0) { // No more fingers on the screen
-        touchendX = e.changedTouches[0].screenX;
-        touchendY = e.changedTouches[0].screenY;
-        touchEndTime = new Date().getTime();
-        handleSwipe();
-    }
-});
 
 function filterBooks(searchTerm) {
     galleryContainer.innerHTML = '';
@@ -214,8 +169,30 @@ searchInput.addEventListener('input', (e) => {
     filterBooks(e.target.value);
 });
 
+const aboutLink = document.getElementById('about-link');
+const aboutModal = document.getElementById('about-modal');
+const closeAboutModal = document.querySelector('.close-about');
+
+aboutLink.addEventListener('click', () => {
+    aboutModal.style.display = 'block';
+    document.body.classList.add('modal-open');
+});
+
+aboutModal.addEventListener('click', (e) => {
+    if (e.target === aboutModal) {
+        aboutModal.style.display = 'none';
+        document.body.classList.remove('modal-open');
+    }
+});
+
+closeAboutModal.addEventListener('click', () => {
+    aboutModal.style.display = 'none';
+    document.body.classList.remove('modal-open');
+});
+
 closeModal.addEventListener('click', () => {
     modal.style.display = 'none';
+    document.body.classList.remove('modal-open');
 });
 
 prevButton.addEventListener('click', showPrevImage);
