@@ -8,6 +8,7 @@ const prevButton = document.querySelector('.prev');
 const nextButton = document.querySelector('.next');
 const downloadButton = document.getElementById('download-button');
 const searchInput = document.getElementById('search-input');
+const modalBookName = document.getElementById('modal-book-name');
 
 let books = [];
 let filteredBooks = [];
@@ -88,6 +89,7 @@ function openModal(bookIndex, imageIndex) {
         currentImageIndex = imageIndex;
         modal.style.display = 'block';
         document.body.classList.add('modal-open');
+        modalBookName.textContent = book.name; // Set book name
         updatePageContent();
         updateButtonStates();
     }
@@ -110,6 +112,7 @@ function updatePageContent() {
         modalImage.classList.add('fade-in');
     }, 300);
     downloadButton.href = book.address;
+    modalBookName.textContent = book.name; // Update book name on page change
     renderThumbnails(pages);
     updateButtonStates();
 }
