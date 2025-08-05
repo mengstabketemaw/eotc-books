@@ -31,6 +31,13 @@ async function fetchBooks() {
         const response = await fetch('eotc-data.json');
         const data = await response.json();
         books = Object.values(data.Books);
+
+        // Shuffle the books array
+        for (let i = books.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [books[i], books[j]] = [books[j], books[i]];
+        }
+
         filteredBooks = books;
         loadMoreBooks();
     } catch (error) {

@@ -19,6 +19,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 5px;
+    padding-right: 30px;
+
 }
 
 #about-link {
@@ -44,6 +47,26 @@ header {
 
 .cross {
     margin-right: 10px;
+}
+
+.cross-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.25rem; /* 20px */
+    text-decoration: none;
+}
+
+.cross-icon > div {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e5e5e5; /* neutral-200 */
+    background: #fff;
+    height: 40px;
+    width: 40px;
+    border-radius: 0.75rem; /* 12px */
 }
 
 #search-input {
@@ -239,25 +262,4 @@ body.modal-open {
 
 .prev:hover, .next:hover {
     background-color: rgba(0,0,0,0.8);
-}
-
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        align-items: flex-start;
-        height: auto;
-    }
-
-    #search-input {
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    #about-link {
-        margin-top: 10px;
-    }
-
-    body {
-        margin-top: 120px; /* Adjust margin for larger header */
-    }
 }
